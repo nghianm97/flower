@@ -5,6 +5,10 @@
     <link rel="shortcut icon" href="images/gift.png" type="image/x-icon" />
     <link rel="stylesheet" href="css/index.css" />
 
+    <!-- Preload critical resources for faster loading -->
+    <link rel="preload" href="xinloiem.mp4" as="video" type="video/mp4" />
+    <link rel="preload" href="bg.mp4" as="video" type="video/mp4" />
+
     <!-- Document Title -->
     <title>FLOWERS FOR SOMEONE</title>
   </head>
@@ -35,6 +39,8 @@
         muted
         loop
         playsinline
+        webkit-playsinline
+        preload="metadata"
       >
         <source src="bg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
@@ -75,6 +81,45 @@
         </button>
       </div>
 
+      <!-- Loading Indicator -->
+      <div
+        id="loading-indicator"
+        style="
+          position: absolute;
+          top: 70vh;
+          width: 100%;
+          display: none;
+          justify-content: center;
+          color: white;
+          font-family: 'Courier New', Courier, monospace;
+          z-index: 3;
+        "
+      >
+        <div style="text-align: center">
+          <div style="margin-bottom: 10px">Đang tải nhạc...</div>
+          <div
+            style="
+              width: 40px;
+              height: 4px;
+              background: rgba(255, 255, 255, 0.3);
+              border-radius: 2px;
+              margin: 0 auto;
+            "
+          >
+            <div
+              id="loading-bar"
+              style="
+                width: 0%;
+                height: 100%;
+                background: white;
+                border-radius: 2px;
+                transition: width 0.3s ease;
+              "
+            ></div>
+          </div>
+        </div>
+      </div>
+
       <!-- Hidden Video Player -->
       <div
         id="video-player"
@@ -95,6 +140,8 @@
           preload="auto"
           loop
           muted
+          playsinline
+          webkit-playsinline
         >
           <source src="xinloiem.mp4" type="video/mp4" />
           Your browser does not support the video tag.
